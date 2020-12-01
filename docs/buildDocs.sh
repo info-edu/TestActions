@@ -30,11 +30,14 @@ export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
 ##############
 # BUILD DOCS #
 ##############
+
+ls -a > before_file_in_src.txt
+ls -a docs/ > before_file_in_docs.txt
  
 # build our documentation with sphinx (see docs/conf.py)
 # * https://www.sphinx-doc.org/en/master/usage/quickstart.html#running-the-build
 make -C docs clean
-make -C docs html
+make -C docs html > make_log.txt
  
 #######################
 # Update GitHub Pages #
