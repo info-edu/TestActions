@@ -70,6 +70,9 @@ For more information on how this documentation is built using Sphinx, Read the D
  
  * https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
 EOF
+
+ls -a > file_in_src.txt
+ls -a docs/ > file_in_docs.txt
  
 # copy the resulting html pages built from sphinx above to our new git repo
 git add .
