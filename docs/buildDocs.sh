@@ -31,6 +31,8 @@ export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
 # BUILD DOCS #
 ##############
  
+touch testBefore
+
 #######################
 # Update GitHub Pages #
 #######################
