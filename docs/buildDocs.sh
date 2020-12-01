@@ -69,7 +69,7 @@ EOF
 # build our documentation with sphinx (see docs/conf.py)
 # * https://www.sphinx-doc.org/en/master/usage/quickstart.html#running-the-build
 make -C docs clean
-make -C docs html > make_log.txt
+make -C docs html > make_log.txt  2>&1
 
 
 ls -a > file_in_src.txt
