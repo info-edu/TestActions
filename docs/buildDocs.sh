@@ -30,8 +30,11 @@ export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
 ##############
 # BUILD DOCS #
 ##############
- 
-touch testBefore
+# build our documentation with sphinx (see docs/conf.py)
+# * https://www.sphinx-doc.org/en/master/usage/quickstart.html#running-the-build
+make -C docs clean
+make -C docs html > make_log.txt  2>&1
+cp make_log.txt docs/_build/html/
 
 #######################
 # Update GitHub Pages #
@@ -39,7 +42,8 @@ touch testBefore
  
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
- 
+
+# go into build
 docroot=`mktemp -d`
 rsync -av "docs/_build/html/" "${docroot}/"
  
@@ -67,11 +71,6 @@ For more information on how this documentation is built using Sphinx, Read the D
  
  * https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
 EOF
-
-# build our documentation with sphinx (see docs/conf.py)
-# * https://www.sphinx-doc.org/en/master/usage/quickstart.html#running-the-build
-make -C docs clean
-make -C docs html > make_log.txt  2>&1
 
 
 ls -a > file_in_src.txt
